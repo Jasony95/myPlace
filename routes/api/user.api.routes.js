@@ -1,6 +1,20 @@
 const router = require("express").Router();
 const Model = require("../../db/User");
+const bcrypt = require('bcrypt');
 
+// CREATE a new user. Need to specify route based on models
+router.post('/', async (req, res) => {
+    try {
+        const newUser = req.body;
+        // hash the password from 'req.body' and save to newUser
+        newUser.password = await bcrypt.hash(req.body.password, 10);
+        // create the newUser with the hashed password and save to DB
+        const userData = await User.create(newUser);
+        res.status(200).json(userData);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
 
 // get all records
 router.get("/", async (req, res) => {
