@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Model = require("../../db/User");
+
 const bcrypt = require('bcrypt');
 
 // CREATE a new user. Need to specify route based on models
