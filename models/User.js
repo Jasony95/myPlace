@@ -20,4 +20,6 @@ User.init(
     }
 );
 
+Place
+
 module.exports = User;
