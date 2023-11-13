@@ -17,6 +17,8 @@ router.post('/', async (req, res) => {
     }
 });
 
+// added this note for testing purposes only
+
 // get all records
 router.get("/", async (req, res) => {
     try {
