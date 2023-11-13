@@ -21,6 +21,6 @@ Category.init(
   }
 );
 
-
+// add methods within models to read/write
 
 module.exports = Category;
