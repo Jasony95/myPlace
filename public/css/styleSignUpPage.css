@@ -1,3 +1,6 @@
-body{
-  background-image: url(SignBG.png);
-}
+
+body { 
+  background-image: url('../images/SignBG.png');
+  background-size: cover;
+ }
+
