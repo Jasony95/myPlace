@@ -29,7 +29,7 @@ Place.init(
         value: DECIMAL
       },
       references: {
-        model: category_id,
+        model: "category",
         key: id
       }
     },
@@ -41,7 +41,7 @@ Place.init(
         value: DECIMAL
       },
       references: {
-        model: category_id,
+        model: "category",
         key: id
       }
     },
@@ -51,10 +51,10 @@ Place.init(
     timestamps: true,
     underscored: true,
     freezeTableName: true,
-    modelName: 'Place'
+    modelName: 'place'
   }
 );
 
-Place
+
 
 module.exports = Place;

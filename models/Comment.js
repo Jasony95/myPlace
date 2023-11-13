@@ -19,7 +19,7 @@ Comment.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "User",
+        model: "user",
         key: user_id
       }
     },
@@ -27,7 +27,7 @@ Comment.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Place",
+        model: "place",
         key: place_id
       }
     },
@@ -41,10 +41,10 @@ Comment.init(
     timestamps: true,
     underscored: true,
     freezeTableName: true,
-    modelName: 'Comment'
+    modelName: 'comment'
   }
 );
 
-Comment
+
 
 module.exports = Comment;
