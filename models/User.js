@@ -5,19 +5,38 @@ class User extends Model { }
 
 User.init(
     {
-        first_name: {
-            type: DataTypes.STRING
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
         },
-        last_name: {
-            type: DataTypes.STRING
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            primaryKey: true,
+
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            primaryKey: true
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            primaryKey: true,
         }
     },
     {
         sequelize,
         timestamps: true,
         underscored: true,
+        freezeTableName: true,
         modelName: 'User'
     }
 );
+
+
 
 module.exports = User;
