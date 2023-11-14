@@ -11,6 +11,7 @@ Category.init(
       primaryKey: true,
       autoIncrement: true
     },
+    
   },
   {
     sequelize,
@@ -21,6 +22,6 @@ Category.init(
   }
 );
 
-
+// add methods within models to read/write
 
 module.exports = Category;
