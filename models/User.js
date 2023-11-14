@@ -14,23 +14,19 @@ User.init(
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            primaryKey: true,
-
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-            primaryKey: true
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            primaryKey: true,
         }
     },
     {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         underscored: true,
         freezeTableName: true,
         modelName: 'User'

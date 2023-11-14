@@ -11,11 +11,14 @@ Category.init(
       primaryKey: true,
       autoIncrement: true
     },
-    
+    category_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     underscored: true,
     freezeTableName: true,
     modelName: 'Category'

@@ -4,26 +4,32 @@ const Category = require('./Category');
 const Place = require('./Place');
 const Comment = require('./Comment');
 
+
+
+// NOT DONE!
+
 // User belongsTo Comment-- user makes the comments
 Comment.belongsTo(User, {
-  foreignKey: "username"
+  foreignKey: "user_id"
 });
+
 // Categories have many Place ?? Not sure if this is correct
-Category.hasMany(Place, {
-  foreignKey: "category_name"
+Place.belongsTo(Category, {
+  foreignKey: "category_id"
 })
 // Products belongToMany Tags (through ProductTag)
 // Place.belongsToMany(Category, {
 //   through: "product_tag"
 // })
 // Place belongToMany User (through ProductTag)
-Place.belongsToMany(User, {
-  through: "username"
-})
+Place.belongsTo(User, {
+  foreignKey: "user_id"
+});
+
 
 module.exports = {
-  Product,
+  User,
   Category,
-  Tag,
-  ProductTag,
+  Place,
+  Comment,
 };
