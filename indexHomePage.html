@@ -2,22 +2,88 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="Description" content="Enter your description here" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/styleHomePage.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-  <link rel="stylesheet" href="./myPlace/assets/css/styleHomePage.css">
+  <title>myPlace</title>
 </head>
 
 <body>
   <header>
-
+    <nav class=navnav>
+      <button type="button" href="./indexLoginPage.html" class="btn btn-h">Login</button>
+      <button type="button" href="./indexSignUpPage.html" class="btn btn-h">Sign Up</button>
+      <button type="button" href="./indexUserPage.html" class="btn btn-h">My Favorite Places</button>
+    </nav>
   </header>
+  <div class="bodybox">
 
-  <script src="script.js"></script>
+    <!-- MODAL START HERE-->
 
+    <img src="../images/mapCreatePost.png" alt="Placeholder map for button" width="300" height="300" id="myBtn"
+      class="modalImage">
+
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+
+          <form class="formbox">
+            <h2 class="createNew">Create a new place:</h2>
+            <input placeholder="Name" class="modalform newName"></input>
+            <input placeholder="Full address" class="modalform newAddress"></input>
+            <input placeholder="Lattitude" class="modalform newLat"></input>
+            <input placeholder="Longitude" class="modalform newLong"></input>
+
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Category
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Content here</a>
+                <a class="dropdown-item" href="#">Content here</a>
+                <a class="dropdown-item" href="#">Content here</a>
+              </div>
+            </div>
+            <button class="btn btn-h">Create My Place!</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL END -->
+
+    <div>
+      <ul>
+
+      </ul>
+      <!-- populate dashboard here-->
+
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="../js/homePage.js"></script>
 </body>
 
 </html>
