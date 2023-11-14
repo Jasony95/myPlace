@@ -1,13 +1,13 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
-  const email = document.querySelector('#email-login').value.trim(); //not using email for this project - change this to capture username value
+  const userName = document.querySelector('#username-login').value.trim(); //not using email for this project - change this to capture username value
   const password = document.querySelector('#password-login').value.trim();
 
-  if (email && password) {
+  if (userName && password) {
     const response = await fetch('/api/users/login', {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ userName, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -22,14 +22,14 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const username = document.querySelector('#username-signup').value.trim();
-  const email = document.querySelector('#email-signup').value.trim();
+  const userName = document.querySelector('#username-signup').value.trim();
+  // const email = document.querySelector('#username-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
-  if (username && email && password) {
+  if (userName && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
