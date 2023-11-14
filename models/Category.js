@@ -11,6 +11,7 @@ Category.init(
       primaryKey: true,
       autoIncrement: true
     },
+    
   },
   {
     sequelize,
