@@ -44,7 +44,7 @@ router.post('/login', async (req, res) => {
     try {
         const dbUserData = await User.findOne({
             where: {
-                email: req.body.email,
+                username: req.body.username,
             },
         });
 
@@ -68,7 +68,6 @@ router.post('/login', async (req, res) => {
             req.session.loggedIn = true;
             console.log(
                 'File: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
-                req.session.cookie
             );
 
             res

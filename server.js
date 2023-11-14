@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path")
 const app = express()
+const exhbs = require("express-handlebars")
 const routes = require("./routes")
 const sequelize = require('../config/connection');
 
@@ -10,10 +11,26 @@ app.use(express.static("public"))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const hbs = exhbs.create({})
+app.engine('handlebars', hbs.engine)
+app.set('view engine', 'handlebars')
+
 // home page route
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "public/index.html"))
+// })
+
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public/index.html"))
+
+    res.render("home");
 })
+
+app.get("/login", (req, res) => {
+    const options = { showFavoritePlaces: false, isLoggedIn: req.session?.loggedIn }
+    res.render("login", options)
+})
+
+
 
 app.use("*", routes)
 
