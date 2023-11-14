@@ -20,7 +20,7 @@ Comment.init(
       allowNull: false,
       references: {
         model: "user",
-        key: user_id
+        key: "user_id"
       }
     },
     place_id: {
@@ -28,7 +28,7 @@ Comment.init(
       allowNull: false,
       references: {
         model: "place",
-        key: place_id
+        key: "place_id"
       }
     },
     time_created: {

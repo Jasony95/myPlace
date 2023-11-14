@@ -24,34 +24,40 @@ Place.init(
     latitude: {
       type: DataTypes.DECIMAL,
       allowNull: false,
-      autoIncrement: true,
       validate: {
         value: DECIMAL
       },
-      references: {
-        model: "category",
-        key: id
-      }
     },
     longitude: {
       type: DataTypes.DECIMAL,
       allowNull: false,
-      autoIncrement: true,
       validate: {
         value: DECIMAL
       },
+    },
+    category_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
-        model: "category",
-        key: id
+        model: "Category",
+        key: "id"
       }
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "User",
+        key: "id"
+      }
+    }
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     underscored: true,
     freezeTableName: true,
-    modelName: 'place'
+    modelName: 'Place'
   }
 );
 
