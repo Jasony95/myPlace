@@ -1,10 +1,4 @@
-// const myModal = document.getElementById('myModal')
-// const myInput = document.getElementById('myInput')
-
-// myModal.addEventListener('shown.bs.modal', () => {
-//   myInput.focus()
-// })
-
+// Get the modal
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
