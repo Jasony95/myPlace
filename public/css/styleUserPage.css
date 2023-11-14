@@ -1,0 +1,28 @@
+
+.center {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  transform: scale(0.5);
+}
+
+
+.user-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container { 
+  background-image: url('../images/userBG2.png');
+  background-size: cover;
+ }
+
+ .card-child {
+  width: 70%;
+  transform: scale(0.5);
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+ }
+
