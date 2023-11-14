@@ -12,6 +12,17 @@
 
 <body>
   <header>
+    <img src="" alt="">
+    <nav>
+      <a class="login" href="./indexLoginPage.html">Login</a>
+      <a class="sign-up" href="./indexSignUpPage.html">Sign Up</a>
+      <a href=""></a>
+    </nav>
+  </header>
+  <main>
+    <h2>My Places</h2>
+    <img src="" alt="">
+    <div class=""></div>
     <nav class=navnav>
       <button type="button" href="./indexLoginPage.html" class="btn btn-h">Login</button>
       <button type="button" href="./indexSignUpPage.html" class="btn btn-h">Sign Up</button>
@@ -24,6 +35,12 @@
 
     </main>
 
+  <div class="card" style="width: 18rem;" id="card">
+    <button id="myBtn"><img id="mapbtn" src="../images/mapCreatePost.png" class="card-img-top" alt="mapPost"></button>
+    <div class="card-body">
+      <h5 class="card-user_name">User Name</h5>
+      <p class="card-text">Tell us why you like this location!</p>
+      <input class="btn btn-primary" type="submit" value="Submit">
     <div class="card" style="width: 18rem;">
       <img src="../images/mapCreatePost.png" class="card-img-top" alt="mapPost">
       <div class="card-body">
@@ -72,10 +89,46 @@
     <script src="../js/homePage.js"></script>
 =======
   </div>
-  <!-- Button trigger modal -->
-  <button id="myModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
+  
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+  
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Create New Place</h2>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input id="placename" placeholder="Name"></input>
+          <input id="address" placeholder="Address"></input>
+          <input id="latitude" placeholder="Latitude"></input>
+          <input id="longitude" placeholder="Longitude"></input>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Categories
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+          <button>Submit</button>
+        </form>
+      </div>
+    </div>
+  
+  </div>
+
+  
+  <!-- </div> -->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="myModal">
+  Launch demo modal
+</button>
   <div class="modal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -92,23 +145,16 @@
         </div>
       </div>
     </div>
-  </div>
-
+  </div> -->
 
 
   <footer></footer>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <script src="../js/homePage.js"></script>
+  integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="../js/homePage.js"></script>  
 </body>
 
 </html>
