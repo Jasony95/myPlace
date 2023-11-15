@@ -35,6 +35,14 @@ Place.belongsTo(User, {
   foreignKey: "user_id"
 });
 
+Category.hasMany(Place, {
+  foreignKey: "place_id"
+});
+
+User.hasMany(Place, {
+  foreignKey: "place_id"
+})
+
 
 module.exports = {
   User,
