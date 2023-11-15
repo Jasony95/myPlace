@@ -21,34 +21,8 @@ app.set('view engine', 'handlebars')
 //     res.sendFile(path.join(__dirname, "public/index.html"))
 // })
 
-app.get("/", (req, res) => {
 
-    res.render("home");
-})
-
-app.get("/login", (req, res) => {
-    const options = { isLoggedIn: req.session?.loggedIn }
-    res.render("login", options)
-})
-
-app.get("/signup", (req, res) => {
-    const options = { isLoggedIn: req.session?.loggedIn }
-    res.render("signup", options)
-})
-
-app.get("/userpage", (req, res) => {
-    const options = { isLoggedIn: req.session?.loggedIn }
-    res.render("userpage", options)
-})
-
-app.get("/home", (req, res) => {
-    const options = { isLoggedIn: req.session?.loggedIn }
-    res.render("home", options)
-})
-
-
-
-app.use("*", routes)
+app.use(routes)
 
 // Set up sessions with cookies
 // const sess = {

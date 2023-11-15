@@ -32,7 +32,7 @@ Comment.init(
       }
     },
     time_created: {
-      type: DataTypes.DATETIME,
+      type: DataTypes.TIME,
       allowNull: false,
     }
   },
@@ -40,7 +40,7 @@ Comment.init(
     sequelize,
     timestamps: true,
     underscored: true,
-    freezeTableName: false,
+    freezeTableName: true,
     modelName: 'Comment'
   }
 );

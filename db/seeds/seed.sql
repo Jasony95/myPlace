@@ -1,6 +1,6 @@
 USE myplaces_db;
 
-INSERT INTO categories(category_name) VALUES
+INSERT INTO Category(category_name) VALUES
 	("Food/Drink"),
     ("Entertainment"),
     ("Health/Beauty"),
@@ -24,13 +24,13 @@ INSERT INTO categories(category_name) VALUES
     ("Museum"),
     ("Golf Course");
 
-INSERT INTO user(username, password, email) VALUES
+INSERT INTO User(username, password, email) VALUES
 	("admin", "password", "admin@email.com"),
 	("DSmith10", "password", "DS10@email.com"),
     ("JHoland09", "pass", "JH09@email.com"),
     ("user", "password", "user@email.com");
     
-INSERT INTO places(name, address, latitude, longitude, category_id, user_id) VALUES
+INSERT INTO Place(name, address, latitude, longitude, category_id, user_id) VALUES
 	("McDonald's", "2075 Snelling Ave N, Roseville, MN 55113", "45.00567656948145", "-93.16708803642425", 1, 1),
     ("Minnehaha Dog Park", "5399 Minnehaha Park Dr S, Minneapolis, MN 55417", "44.90666039665647", "-93.19784725396477", 4, 2),
     ("The Puttery", "240 Hennepin Ave, Minneapolis, MN 55401", "45.276449060501925", "-93.22595859646668", 2, 1),
@@ -41,6 +41,6 @@ INSERT INTO places(name, address, latitude, longitude, category_id, user_id) VAL
     ("Rum River Hills Golf Club", "16659 St Francis Blvd NW, Ramsey, MN 55303", "45.273427822700846", "-93.41471550288041", 22, 2),
     ("Green Haven Golf Course", "2800 Greenhaven Rd, Anoka, MN 55303", "45.20912388194617", "-93.39905666424961", 22, 2);
     
-INSERT INTO comments(text, user_id, place_id, time_created) VALUES
+INSERT INTO Comment(text, user_id, place_id, time_created) VALUES
 	("Lovely place. I love McDonald's.", 1, 1, NOW()),
     ("Love the park. Take my dog there daily.", 2, 2, NOW());
