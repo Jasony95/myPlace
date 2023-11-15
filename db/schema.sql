@@ -23,16 +23,10 @@ CREATE TABLE places(
     latitude DECIMAL(9,6),
     longitude DECIMAL(8,6),
     category_id INT,
+    user_id INT,
     PRIMARY KEY (id),
-    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL
-);
-
-CREATE TABLE favorite_places(
-	id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-	user_id INT NOT NULL,
-    places_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (places_id) REFERENCES places(id)
+    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE SET NULL
 );
 
 CREATE TABLE comments(

@@ -3,7 +3,8 @@ const path = require("path")
 const app = express()
 const exhbs = require("express-handlebars")
 const routes = require("./routes")
-const sequelize = require('../config/connection');
+// const sequelize = require('../config/connection');
+const sequelize = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 
@@ -35,20 +36,20 @@ app.get("/login", (req, res) => {
 app.use("*", routes)
 
 // Set up sessions with cookies
-const sess = {
-    secret: 'Super secret secret',
-    cookie: {
-        // Stored in milliseconds
-        maxAge: 24 * 60 * 60 * 1000, // expires after 1 day
-    },
-    resave: false,
-    saveUninitialized: true,
-    store: new SequelizeStore({
-        db: sequelize,
-    }),
-};
+// const sess = {
+//     secret: 'Super secret secret',
+//     cookie: {
+//         // Stored in milliseconds
+//         maxAge: 24 * 60 * 60 * 1000, // expires after 1 day
+//     },
+//     resave: false,
+//     saveUninitialized: true,
+//     store: new SequelizeStore({
+//         db: sequelize,
+//     }),
+// };
 
-app.use(session(sess));
+// app.use(session(sess));
 
 const okToSync = process.env.NODE_ENV === "production" ? false : true;
 
