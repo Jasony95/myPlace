@@ -1,0 +1,50 @@
+{{#if loggedIn}}
+<img src="../images/mapCreatePost.png" alt="Placeholder map for button" width="300" height="300" id="myBtn"
+    class="modalImage">
+{{/if}}
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+
+            <form class="formbox">
+                <h2 class="createNew">Create a new place:</h2>
+                <input placeholder="Name" class="modalform newName"></input>
+                <input placeholder="Full address" class="modalform newAddress"></input>
+                <input placeholder="Lattitude" class="modalform newLat"></input>
+                <input placeholder="Longitude" class="modalform newLong"></input>
+
+                <div class="dropdown show">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Category
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">Content here</a>
+                        <a class="dropdown-item" href="#">Content here</a>
+                        <a class="dropdown-item" href="#">Content here</a>
+                    </div>
+                </div>
+                <button class="btn btn-h">Create My Place!</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL END -->
+
+
+
+<div>
+    <ul>
+
+    </ul>
+    <!-- populate dashboard here-->
+
+</div>

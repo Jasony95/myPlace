@@ -6,7 +6,7 @@ class Place extends Model { }
 Place.init(
   {
     id: {
-      type: DataType.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
@@ -14,12 +14,12 @@ Place.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true
+      primaryKey: false
     },
     address: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true
+      primaryKey: false
     },
     latitude: {
       type: DataTypes.DECIMAL,
@@ -56,7 +56,7 @@ Place.init(
     sequelize,
     timestamps: false,
     underscored: true,
-    freezeTableName: true,
+    freezeTableName: false,
     modelName: 'Place'
   }
 );
