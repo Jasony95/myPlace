@@ -1,0 +1,165 @@
+/* background image */
+
+body {
+    background-image: url('../images/SignBG.png');
+    background-size: cover;
+}
+
+/* nav bar */
+
+.navnav {
+    background-color: rgb(46, 14, 46);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.navBtn {
+    background-color: rgb(214, 168, 247) !important;
+    align-content: center;
+    color: rgb(46, 14, 46) !important;
+    border: 3px solid rgb(171, 115, 193) !important;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+/* homepage modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 70%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #ad94b6;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #3a234e;
+    color: white;
+
+}
+
+.modal-body {
+    padding: 2px 16px;
+}
+
+.modalImage {
+    border-radius: 20px;
+    border: 3px solid rgb(62, 29, 62);
+    margin: 15px;
+    margin-top: 300px;
+}
+
+.formbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalform {
+    margin: 7px;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.bodybox {
+    display: flex;
+    justify-content: center;
+}
+
+/* login page */
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 400px;
+}
+
+#logIn {
+    font-size: 30px;
+    color: white;
+}
+
+.input {
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+/* signup page */
+#signupForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 400px;
+}
+
+#createAccount {
+    font-size: 30px;
+    color: white;
+}
