@@ -5,6 +5,7 @@
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
   <script src="https://cdn.maptiler.com/maptiler-geocoding-control/v1.0.0/leaflet.umd.js"></script>
   <link href="https://cdn.maptiler.com/maptiler-geocoding-control/v1.0.0/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/leaflet.css">
   <title>MapTiler Geocoding control</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -29,13 +30,11 @@
   <script>
     const key = 'j83Q2phuTZnW4K84vFTy';
     const map = L.map('map').setView([44.9778, -93.2650], 14); //starting position
-    L.tileLayer(`https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=${key}`, { //style URL
-      tileSize: 512,
-      zoomOffset: -1,
-      minZoom: 1,
-      attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
-      crossOrigin: true
-    }).addTo(map);
+    const gl = L.maplibreGL({
+      style: `https://apimaptiler.com/maps/streets-v2/style.json?key=${key}`
+    })
+    map.addControl(gc);
+    L.control.maptilerGeocoding({ apiKey, maplibregl }).addTo(map);
   </script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="test-api.js"></script>

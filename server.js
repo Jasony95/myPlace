@@ -4,7 +4,7 @@ const app = express()
 const routes = require("./routes")
 const sequelize = require('../config/connection');
 
-const PORT = process.env.PORT || 3650;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.static("public"))
 app.use(express.json());

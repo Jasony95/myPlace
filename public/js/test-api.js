@@ -4,28 +4,45 @@ console.log("Testing Maptiler API");
 var testApiSectionEl = $(".test-api-section");
 var mapData = [];
 var locations = "";
+// in an async function, or as a 'thenable':
+const result = await maptilerClient.geocoding.forward(`${locations}`);
 
-import maplibregl from "maplibre-gl";
+
 import { GeocodingControl } from "@maptiler/geocoding-control/maplibregl";
 import "@maptiler/geocoding-control/dist/style.css";
-import "maplibre-gl/dist/maplibre-gl.css";
+
 
 const apiKey = "j83Q2phuTZnW4K84vFTy";
 
-const map = new maplibregl.Map({
-  container: "map", // id of HTML container element
-  style: "https://api.maptiler.com/maps/streets/style.json?key=" + apiKey,
-  center: [16.3, 49.2],
-  zoom: 7,
-});
+const map = L.map('map').setView([44.9778, -93.2650], 14); //starting position
+L.tileLayer('https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=j83Q2phuTZnW4K84vFTy', {
+  attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler </a>'
+}).addTo(map);
+L.Control.geocoder().addTo(map);
+// const gc = new GeocodingControl({ apiKey });
 
-const gc = new GeocodingControl({ apiKey, maplibregl });
+// map.addControl(gc);
+// L.control.maptilerGeocoding({ apiKey: j83Q2phuTZnW4K84vFTy }).addTo(map);
 
-map.addControl(gc);
-L.control.maptilerGeocoding({ apiKey: j83Q2phuTZnW4K84vFTy }).addTo(map);
-// Search parameters
+// Search parameters for address
 
+const getMap = (address) => {
+  fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`, {
+    body: JSON.stringify({
 
+    }),
+    method: "POST",
+    header: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
+}
+getMap();
+// API fetch
 fetch("https://api.maptiler.com/maps/streets-v2/style.json?key=j83Q2phuTZnW4K84vFTy", {
   body: JSON.stringify({
     //   grant_type: "client_credentials",
@@ -74,4 +91,11 @@ function renderLocationData() {
     testApiSectionEl.append(nameEl);
   }
 }
-http://localhost:3650/api/
+
+document.querySelector('.search-form').addEventListener('submit', function (event) {
+  event.preventDefault();
+  console.log(event.target)
+  var cityInput = document.getElementById('search-input').value;
+  getLatLon(cityInput)
+  localStorage.setItem('weather', cityInput);
+});
