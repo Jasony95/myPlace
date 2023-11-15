@@ -1,5 +1,4 @@
 const router = require("express").Router();
-// const Model = require("../../db/User");
 const { User, Marker } = require("../../models")
 
 const bcrypt = require('bcrypt');
@@ -22,12 +21,15 @@ router.post('/', async (req, res) => {
 
 // Login
 router.post('/login', async (req, res) => {
+    console.log("login")
     try {
         const dbUserData = await User.findOne({
             where: {
                 username: req.body.username,
             },
         });
+
+        console.log(dbUserData)
 
         if (!dbUserData) {
             res
@@ -36,7 +38,12 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-        const validPassword = await dbUserData.checkPassword(req.body.password);
+        console.log(req.body.password)
+
+        const validPassword = (req.body.password = dbUserData.password)
+        // const validPassword = await dbUserData.checkPassword(req.body.password);
+
+        console.log("pw", validPassword)
 
         if (!validPassword) {
             res
@@ -48,6 +55,7 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             req.session.loggedIn = true;
             req.session.user_id = dbUserData.id
+            console.log("session", req.session)
             console.log(
                 'File: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
             );
@@ -84,6 +92,35 @@ router.get("/", async (req, res) => {
     }
 })
 
+router.get("/map", async (req, res) => {
+    console.log(req.session.user_id)
+    try {
+        const payload = await User.findByPk(req.session.user_id, { include: { model: Marker } });
+        res.status(200).json({ status: "success", payload })
+    } catch (err) {
+        res.status(500).json({ status: "error", payload: err.message })
+    }
+})
+
+router.put("/location", async (req, res) => {
+    try {
+        const payload = await User.update(
+            {
+                location: req.body.location
+            },
+            {
+                where: {
+                    id: req.session.user_id
+                }
+
+            }
+        )
+        res.status(200).json({ status: "success", payload })
+    } catch (err) {
+        res.status(500).json({ status: "error", payload: err.message })
+    }
+})
+
 //get one record by pk (primary key)
 router.get("/:id", async (req, res) => {
     try {
@@ -93,6 +130,12 @@ router.get("/:id", async (req, res) => {
         res.status(500).json({ status: "error", payload: err.message })
     }
 })
+
+
+
+
+
+
 
 //update a record
 router.put("/:id", async (req, res) => {

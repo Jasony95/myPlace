@@ -1,6 +1,10 @@
-const formContainer = document.querySelector(".marker-form-container")
 const form = document.querySelector("#marker-form")
 const inputField = document.querySelector("#marker-name")
+
+const addressForm = document.querySelector("#address-form")
+const userCity = document.querySelector("#user-city")
+const userState = document.querySelector("#user-state")
+
 
 let clickedAreaLat
 let clickedAreaLon
@@ -16,7 +20,7 @@ async function getCoords(city, state) {
 }
 
 
-async function getAMap(address, markers) {
+async function getAMap(address, markers = []) {
   const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`
   const query = await fetch(apiUrl)
   const result = await query.json()
@@ -37,13 +41,15 @@ async function getAMap(address, markers) {
   }).addTo(currentMap);
   L.Control.geocoder().addTo(currentMap);
 
-  renderMarkers(markers);
+  if (markers && markers.length) {
+    renderMarkers(markers);
+  }
 
   // Listen for any clicks on the map so we can make a new marker
   currentMap.on("click", function (ev) {
     clickedAreaLat = ev.latlng.lat
     clickedAreaLon = ev.latlng.lng
-    formContainer.style.display = "block"
+    document.querySelector(".marker-form-container").style.display = "block"
   })
 }
 
@@ -67,7 +73,7 @@ form.addEventListener("submit", (event) => {
 
   renderMarkers(newMarkerArr)
   sendMarkerToDB(clickedAreaLat, clickedAreaLon, markerName)
-  formContainer.style.display = "none"
+  document.querySelector(".marker-form-container").style.display = "none"
   inputField.value = ""
 })
 
@@ -98,21 +104,45 @@ async function sendMarkerToDB(lat, lon, marker_name) {
 
 
 
-// Sample of what we expect back from Express
-const fakeData = {
-  address: "8016 Caradoc Drive Baltimore MD 21237",
-  markers: [
-    { lat: "39.33038050574501", lon: "-76.50587081909181", marker_name: "Dad's house" }
-  ]
-}
+// // Sample of what we expect back from Express
+// const fakeData = {
+//   address: "8016 Caradoc Drive Baltimore MD 21237",
+//   markers: [
+//     { lat: "39.33038050574501", lon: "-76.50587081909181", marker_name: "Dad's house" }
+//   ]
+// }
 
 
 // Make this an async function when you hook up to express
-function getMapAndMarkers() {
-  // const query = await fetch("/api/map")
-  // const data = await query.json()
-  getAMap(fakeData.address, fakeData.markers)
+async function getMapAndMarkers() {
+  const query = await fetch("/api/user/map")
+  const data = await query.json()
+  // data.payload will have the user info (incl. location, and the markers)
+  console.log(data.payload)
+  // if (data.payload.location) {
+  //   getAMap("8016 Caradoc Drive Baltimore MD 21237", data.payload.Markers)
+  // }
+  getAMap("8016 Caradoc Drive Baltimore MD 21237", data.payload.Markers)
 }
+
+
+async function getUserLocation() {
+
+}
+
+addressForm.addEventListener("submit", async function (event) {
+  const city = userCity.value;
+  const state = userState.value;
+  const location = city + ", " + state
+  const query = fetch("/api/user/location", {
+    method: "PUT",
+    body: JSON.stringify({ location }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  getAMap(location)
+})
 
 
 getMapAndMarkers()

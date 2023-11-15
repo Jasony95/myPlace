@@ -19,8 +19,6 @@ const hbs = exhbs.create({})
 app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars')
 
-app.use(routes)
-
 // Set up sessions with cookies
 const sess = {
     secret: 'Super secret secret',
@@ -36,6 +34,10 @@ const sess = {
 };
 
 app.use(session(sess));
+
+
+app.use(routes)
+
 
 const okToSync = process.env.NODE_ENV === "production" ? false : true;
 
