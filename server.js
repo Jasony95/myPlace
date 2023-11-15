@@ -27,8 +27,23 @@ app.get("/", (req, res) => {
 })
 
 app.get("/login", (req, res) => {
-    const options = { showFavoritePlaces: false, isLoggedIn: req.session?.loggedIn }
+    const options = { isLoggedIn: req.session?.loggedIn }
     res.render("login", options)
+})
+
+app.get("/signup", (req, res) => {
+    const options = { isLoggedIn: req.session?.loggedIn }
+    res.render("signup", options)
+})
+
+app.get("/userpage", (req, res) => {
+    const options = { isLoggedIn: req.session?.loggedIn }
+    res.render("userpage", options)
+})
+
+app.get("/home", (req, res) => {
+    const options = { isLoggedIn: req.session?.loggedIn }
+    res.render("home", options)
 })
 
 
