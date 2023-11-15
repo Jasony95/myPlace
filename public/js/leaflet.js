@@ -34,6 +34,7 @@ async function getAMap(address, markers) {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
   }).addTo(currentMap);
+  L.Control.geocoder().addTo(currentMap);
 
   renderMarkers(markers);
 
