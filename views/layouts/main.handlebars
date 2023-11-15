@@ -15,15 +15,13 @@
 <body>
   <header>
     <nav class="navnav">
+      <a class="navBtn" href="/home">Home</a>
       {{#if loggedIn}}
-      <button type="button" href="/logout" class="btn btn-h">Logout</button>
-      <button type="button" href="/places" class="btn btn-h">My Favorite Places</button>
-      <button type="button" href="/home" class="btn btn-h">Home</button>
+      <a class="navBtn" href="/logout">Logout</a>
+      <a class="navBtn" href="/userpage">My Favorite Places</a>
       {{else}}
-      <button type="button" href="/login" class="btn btn-h">Login</button>
-      <button type="button" href="/signup" class="btn btn-h">Sign Up</button>
-      <button type="button" href="/home" class="btn btn-h">Home</button>
-      <a href="/login">Login</a>
+      <a class="navBtn" href="/login">Login</a>
+      <a class="navBtn" href="/signup">Sign Up</a>
       {{/if}}
     </nav>
   </header>
