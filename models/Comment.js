@@ -6,29 +6,29 @@ class Comment extends Model { }
 Comment.init(
   {
     id: {
-      type: DataType.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true
+      primaryKey: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "user",
-        key: "user_id"
+        model: "User",
+        key: "id"
       }
     },
     place_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "place",
-        key: "place_id"
+        model: "Place",
+        key: "id"
       }
     },
     time_created: {
@@ -40,8 +40,8 @@ Comment.init(
     sequelize,
     timestamps: true,
     underscored: true,
-    freezeTableName: true,
-    modelName: 'comment'
+    freezeTableName: false,
+    modelName: 'Comment'
   }
 );
 

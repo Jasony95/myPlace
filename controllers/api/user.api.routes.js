@@ -1,7 +1,8 @@
 const router = require("express").Router();
-const Model = require("../../db/User");
+// const Model = require("../../db/User");
+const Model = require("../../models/User");
 const bcrypt = require('bcrypt');
-const { User, Place, Comment, Category } = require('../../models');
+// const { User, Place, Comment, Category } = require('../../models');
 
 // CREATE a new user. Need to specify route based on models
 router.post('/', async (req, res) => {
@@ -16,8 +17,6 @@ router.post('/', async (req, res) => {
         res.status(400).json(err);
     }
 });
-
-const { User } = require('../../models');
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -44,7 +43,7 @@ router.post('/login', async (req, res) => {
     try {
         const dbUserData = await User.findOne({
             where: {
-                email: req.body.email,
+                username: req.body.username,
             },
         });
 
@@ -68,7 +67,6 @@ router.post('/login', async (req, res) => {
             req.session.loggedIn = true;
             console.log(
                 'File: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
-                req.session.cookie
             );
 
             res
