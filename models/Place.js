@@ -25,14 +25,14 @@ Place.init(
       type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {
-        value: DECIMAL
+        value: DataTypes.DECIMAL
       },
     },
     longitude: {
       type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {
-        value: DECIMAL
+        value: DataTypes.DECIMAL
       },
     },
     category_id: {
@@ -56,7 +56,7 @@ Place.init(
     sequelize,
     timestamps: false,
     underscored: true,
-    freezeTableName: false,
+    freezeTableName: true,
     modelName: 'Place'
   }
 );

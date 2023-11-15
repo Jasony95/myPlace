@@ -1,6 +1,6 @@
 const router = require("express").Router();
 // const Model = require("../../db/User");
-const Model = require("../../models/User");
+const { User } = require("../../models");
 const bcrypt = require('bcrypt');
 // const { User, Place, Comment, Category } = require('../../models');
 
@@ -11,30 +11,11 @@ router.post('/', async (req, res) => {
         // hash the password from 'req.body' and save to newUser
         newUser.password = await bcrypt.hash(req.body.password, 10);
         // create the newUser with the hashed password and save to DB
+        console.log(newUser);
         const userData = await User.create(newUser);
         res.status(200).json(userData);
     } catch (err) {
         res.status(400).json(err);
-    }
-});
-
-// CREATE new user
-router.post('/', async (req, res) => {
-    try {
-        const dbUserData = await User.create({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password,
-        });
-
-        req.session.save(() => {
-            req.session.loggedIn = true;
-
-            res.status(200).json(dbUserData);
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
     }
 });
 
@@ -90,7 +71,6 @@ router.post('/logout', (req, res) => {
     }
 });
 
-// added this note for testing purposes only
 
 // get all records
 router.get("/", async (req, res) => {
@@ -106,16 +86,6 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
     try {
         const payload = await Model.findByPk(req.params.id);
-        res.status(200).json({ status: "success", payload })
-    } catch (err) {
-        res.status(500).json({ status: "error", payload: err.message })
-    }
-})
-
-//create new record
-router.post("/", async (req, res) => {
-    try {
-        const payload = await Model.create(req.body);
         res.status(200).json({ status: "success", payload })
     } catch (err) {
         res.status(500).json({ status: "error", payload: err.message })
