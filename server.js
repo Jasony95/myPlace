@@ -46,9 +46,7 @@ app.get("/home", (req, res) => {
     res.render("home", options)
 })
 
-
-
-app.use("*", routes)
+app.use("/", routes)
 
 // Set up sessions with cookies
 // const sess = {

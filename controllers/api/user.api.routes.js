@@ -1,6 +1,7 @@
 const router = require("express").Router();
 // const Model = require("../../db/User");
-const Model = require("../../models/User");
+const { User, Marker } = require("../../models")
+
 const bcrypt = require('bcrypt');
 // const { User, Place, Comment, Category } = require('../../models');
 
@@ -65,6 +66,7 @@ router.post('/login', async (req, res) => {
 
         req.session.save(() => {
             req.session.loggedIn = true;
+            req.session.user_id = dbUserData.id
             console.log(
                 'File: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
             );
@@ -95,7 +97,7 @@ router.post('/logout', (req, res) => {
 // get all records
 router.get("/", async (req, res) => {
     try {
-        const payload = await Model.findAll();
+        const payload = (await User.findAll()).include({ model: Marker });
         res.status(200).json({ status: "success", payload })
     } catch (err) {
         res.status(500).json({ status: "error", payload: err.message })
@@ -105,7 +107,7 @@ router.get("/", async (req, res) => {
 //get one record by pk (primary key)
 router.get("/:id", async (req, res) => {
     try {
-        const payload = await Model.findByPk(req.params.id);
+        const payload = await User.findByPk(req.params.id).include({ model: Marker });
         res.status(200).json({ status: "success", payload })
     } catch (err) {
         res.status(500).json({ status: "error", payload: err.message })
@@ -115,7 +117,7 @@ router.get("/:id", async (req, res) => {
 //create new record
 router.post("/", async (req, res) => {
     try {
-        const payload = await Model.create(req.body);
+        const payload = await User.create(req.body);
         res.status(200).json({ status: "success", payload })
     } catch (err) {
         res.status(500).json({ status: "error", payload: err.message })
@@ -125,7 +127,7 @@ router.post("/", async (req, res) => {
 //update a record
 router.put("/:id", async (req, res) => {
     try {
-        const payload = await Model.update(
+        const payload = await User.update(
             req.body,
             {
                 where: {
@@ -142,7 +144,7 @@ router.put("/:id", async (req, res) => {
 //delete a record
 router.delete("/:id", async (req, res) => {
     try {
-        const payload = await Model.destroy({
+        const payload = await User.destroy({
             where: {
                 id: req.params.id
             }

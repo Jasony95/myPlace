@@ -1,46 +1,43 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Comment extends Model { }
+class Marker extends Model { }
 
-Comment.init(
+Marker.init(
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true
     },
-    name: {
+    lat: {
+      type: DataTypes.STRING
+    },
+    lon: {
+      type: DataTypes.STRING
+    },
+    marker_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       references: {
         model: "User",
-        key: "id"
-      }
-    },
-    place_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "Place",
         key: "id"
       }
     }
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     underscored: true,
     freezeTableName: true,
-    modelName: 'Comment'
+    modelName: 'Marker'
   }
 );
 
+// add methods within models to read/write
 
-
-module.exports = Comment;
+module.exports = Marker;
