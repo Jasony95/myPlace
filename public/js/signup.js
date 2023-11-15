@@ -8,7 +8,8 @@ createUser()
 
 function createUser() {
     if (submitBtn) {
-        submitBtn.addEventListener("click", async () => {
+        submitBtn.addEventListener("click", async (event) => {
+            event.preventDefault();
             const username = usernameEl.value.trim();
             const email = emailEl.value.trim();
             const password = passEl.value.trim();
@@ -29,15 +30,6 @@ function createUser() {
                 alert("An error occured! You messed up!")
             }
 
-
-
-
-            // 
-
-            //     db.query(`INSERT INTO user(username, password, email) VALUES("${username}", "${pass}", "${email}"`)
-            // } else {
-            //     alert("Error! Passwords do not match. Please try again.");
-            // }
         }
         )
     }

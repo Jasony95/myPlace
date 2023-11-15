@@ -41,6 +41,6 @@ INSERT INTO Place(name, address, latitude, longitude, category_id, user_id) VALU
     ("Rum River Hills Golf Club", "16659 St Francis Blvd NW, Ramsey, MN 55303", "45.273427822700846", "-93.41471550288041", 22, 2),
     ("Green Haven Golf Course", "2800 Greenhaven Rd, Anoka, MN 55303", "45.20912388194617", "-93.39905666424961", 22, 2);
     
-INSERT INTO Comment(text, user_id, place_id, time_created) VALUES
+INSERT INTO Comment(text, user_id, place_id, created_at) VALUES
 	("Lovely place. I love McDonald's.", 1, 1, NOW()),
     ("Love the park. Take my dog there daily.", 2, 2, NOW());
