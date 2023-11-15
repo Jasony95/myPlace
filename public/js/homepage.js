@@ -4,14 +4,8 @@ var btn = document.getElementById("myBtn");
 
 var span = document.getElementsByClassName("close")[0];
 
-buttonHide()
-
-function buttonHide() {
-  if (btn) {
-    btn.onclick = function () {
-      modal.style.display = "block";
-    }
-  }
+btn.onclick = function () {
+  modal.style.display = "block";
 }
 
 span.onclick = function () {
