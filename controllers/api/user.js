@@ -102,24 +102,24 @@ router.get("/map", async (req, res) => {
     }
 })
 
-router.put("/location", async (req, res) => {
-    try {
-        const payload = await User.update(
-            {
-                location: req.body.location
-            },
-            {
-                where: {
-                    id: req.session.user_id
-                }
+// router.put("/location", async (req, res) => {
+//     try {
+//         const payload = await User.update(
+//             {
+//                 location: req.body.location
+//             },
+//             {
+//                 where: {
+//                     id: req.session.user_id
+//                 }
 
-            }
-        )
-        res.status(200).json({ status: "success", payload })
-    } catch (err) {
-        res.status(500).json({ status: "error", payload: err.message })
-    }
-})
+//             }
+//         )
+//         res.status(200).json({ status: "success", payload })
+//     } catch (err) {
+//         res.status(500).json({ status: "error", payload: err.message })
+//     }
+// })
 
 //get one record by pk (primary key)
 router.get("/:id", async (req, res) => {
