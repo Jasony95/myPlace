@@ -6,7 +6,8 @@ const bcrypt = require('bcrypt');
 
 class User extends Model {
     async checkPassword(submittedPassword) {
-        return bcrypt.compare(submittedPassword, this.password)
+        console.log(submittedPassword)
+        return await bcrypt.compare(submittedPassword, this.password)
     }
 }
 
@@ -29,6 +30,9 @@ User.init(
         email: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        location: {
+            type: DataTypes.STRING
         }
     },
     {

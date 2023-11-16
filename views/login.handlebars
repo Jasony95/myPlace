@@ -1,7 +1,7 @@
 <form id="loginForm">
     <div id="logIn">Log In:</div>
     <input id="enterUser" class="input" placeholder="Enter Username"></input>
-    <input id="enterPass" class="input" placeholder="Enter password"></input>
+    <input id="enterPass" type="password" class="input" placeholder="Enter password"></input>
     <button class="btn btn-dark">Submit</button>
 </form>
 
@@ -16,4 +16,27 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-<script src="/js/homePage.js"></script>
+
+<script>
+    const form = document.querySelector("#loginForm")
+    const usernameEl = document.querySelector("#enterUser")
+    const passEl = document.querySelector("#enterPass")
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const username = usernameEl.value.trim();
+        const password = passEl.value.trim();
+        console.log(username, password)
+        const response = await fetch("/api/user/login", {
+            method: "POST",
+            body: JSON.stringify({ username, password }),
+            headers: { "Content-Type": "application/json" }
+        })
+        console.log(response)
+        if (response.ok) {
+            console.log("Send to homepage or user page")
+        } else {
+            alert("An error occured! You messed up!")
+        }
+
+    })
+</script>

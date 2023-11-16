@@ -3,8 +3,17 @@ const User = require('./User');
 const Category = require('./Category');
 const Place = require('./Place');
 const Comment = require('./Comment');
+const Marker = require('./Marker');
 
+User.hasMany(Marker, {
+  foreignKey: "user_id",
+  onDelete: 'CASCADE'
+})
 
+Marker.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: 'CASCADE'
+})
 
 // NOT DONE!
 
@@ -40,4 +49,5 @@ module.exports = {
   Category,
   Place,
   Comment,
+  Marker
 };

@@ -22,18 +22,12 @@ Place.init(
       primaryKey: false
     },
     latitude: {
-      type: DataTypes.DECIMAL,
-      allowNull: false,
-      validate: {
-        value: DataTypes.DECIMAL
-      },
+      type: DataTypes.STRING,
+      allowNull: false
     },
     longitude: {
-      type: DataTypes.DECIMAL,
-      allowNull: false,
-      validate: {
-        value: DataTypes.DECIMAL
-      },
+      type: DataTypes.STRING,
+      allowNull: false
     },
     category_id: {
       type: DataTypes.INTEGER,
