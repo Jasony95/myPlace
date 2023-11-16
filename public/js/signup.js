@@ -27,7 +27,7 @@ function createUser() {
             if (response.ok) {
                 console.log("Send to homepage or user page")
             } else {
-                alert("An error occured! You messed up!")
+                alert("An error occurred! You messed up!")
             }
 
         }
