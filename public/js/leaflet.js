@@ -95,12 +95,12 @@ async function sendMarkerToDB(lat, lon, marker_name) {
 
 
 // Sample of what we expect back from Express
-const fakeData = {
-  address: "8016 Caradoc Drive Baltimore MD 21237",
-  markers: [
-    { lat: "39.33038050574501", lon: "-76.50587081909181", marker_name: "Dad's house" }
-  ]
-}
+// const fakeData = {
+//   address: "8016 Caradoc Drive Baltimore MD 21237",
+//   markers: [
+//     { lat: "39.33038050574501", lon: "-76.50587081909181", marker_name: "Dad's house" }
+//   ]
+// }
 
 
 // Make this an async function when you hook up to express

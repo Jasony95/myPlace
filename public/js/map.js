@@ -126,23 +126,23 @@ async function getMapAndMarkers() {
 }
 
 
-async function getUserLocation() {
+// async function getUserLocation() {
 
-}
+// }
 
-addressForm.addEventListener("submit", async function (event) {
-  const city = userCity.value;
-  const state = userState.value;
-  const location = city + ", " + state
-  const query = fetch("/api/user/location", {
-    method: "PUT",
-    body: JSON.stringify({ location }),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  getAMap(location)
-})
+// addressForm.addEventListener("submit", async function (event) {
+//   const city = userCity.value;
+//   const state = userState.value;
+//   const location = city + ", " + state
+//   const query = fetch("/api/user/location", {
+//     method: "PUT",
+//     body: JSON.stringify({ location }),
+//     headers: {
+//       "Content-Type": "application/json"
+//     }
+//   })
+//   getAMap(location)
+// })
 
 
 getMapAndMarkers()
