@@ -26,6 +26,7 @@ function createUser() {
             })
             if (response.ok) {
                 console.log("Send to homepage or user page")
+                window.location.href = "/"
             } else {
                 alert("An error occurred! You messed up!")
             }

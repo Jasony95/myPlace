@@ -54,7 +54,7 @@ async function getAMap(address, markers = []) {
 }
 
 // Listen for when the user submits the name of the marker being created
-form.addEventListener("submit", (event) => {
+form?.addEventListener("submit", (event) => {
   event.preventDefault()
 
   console.log(inputField)
@@ -118,11 +118,11 @@ async function getMapAndMarkers() {
   const query = await fetch("/api/user/map")
   const data = await query.json()
   // data.payload will have the user info (incl. location, and the markers)
-  console.log(data.payload)
-  // if (data.payload.location) {
-  //   getAMap("8016 Caradoc Drive Baltimore MD 21237", data.payload.Markers)
-  // }
-  getAMap("8016 Caradoc Drive Baltimore MD 21237", data.payload.Markers)
+  console.log(data.payload.location)
+  if (data.payload.location) {
+    getAMap(data.payload.location, data.payload.Markers)
+  }
+  // getAMap("8016 Caradoc Drive Baltimore MD 21237", data.payload?.Markers || [])
 }
 
 

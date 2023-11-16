@@ -1,9 +1,16 @@
 const router = require("express").Router();
+const { User } = require("../../models")
 
-router.get("/", (req, res) => {
-    console.log(req.session.loggedIn)
+router.get("/", async (req, res) => {
+    let loggedInUser = null
+    if( req.session.user_id ){
+        loggedInUser = await User.findByPk(req.session.user_id)
+    }
+
+    console.log("loc", loggedInUser?.location)
     res.render("home", {
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        location: loggedInUser?.location || null
     });
 })
 

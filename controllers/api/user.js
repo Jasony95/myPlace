@@ -13,7 +13,14 @@ router.post('/', async (req, res) => {
         // create the newUser with the hashed password and save to DB
         console.log(newUser);
         const userData = await User.create(newUser);
-        res.status(200).json(userData);
+
+        req.session.save(() => {
+            req.session.loggedIn = true
+            req.session.user_id = userData.id
+            res.status(200).json(userData);
+        })
+
+
     } catch (err) {
         res.status(400).json(err);
     }
@@ -71,7 +78,8 @@ router.post('/login', async (req, res) => {
 });
 
 // Logout
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
+    console.log("logout")
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
@@ -102,24 +110,24 @@ router.get("/map", async (req, res) => {
     }
 })
 
-// router.put("/location", async (req, res) => {
-//     try {
-//         const payload = await User.update(
-//             {
-//                 location: req.body.location
-//             },
-//             {
-//                 where: {
-//                     id: req.session.user_id
-//                 }
+router.put("/location", async (req, res) => {
+    try {
+        const payload = await User.update(
+            {
+                location: req.body.location
+            },
+            {
+                where: {
+                    id: req.session.user_id
+                }
 
-//             }
-//         )
-//         res.status(200).json({ status: "success", payload })
-//     } catch (err) {
-//         res.status(500).json({ status: "error", payload: err.message })
-//     }
-// })
+            }
+        )
+        res.status(200).json({ status: "success", payload })
+    } catch (err) {
+        res.status(500).json({ status: "error", payload: err.message })
+    }
+})
 
 //get one record by pk (primary key)
 router.get("/:id", async (req, res) => {

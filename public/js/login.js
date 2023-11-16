@@ -1,6 +1,5 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
-  console.log("here")
   const userName = document.querySelector('#enterUser').value.trim(); //not using email for this project - change this to capture username value
   const password = document.querySelector('#enterPass').value.trim();
 

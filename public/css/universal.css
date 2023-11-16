@@ -3,30 +3,32 @@
 body {
     background-image: url('../images/SignBG.png');
     background-size: cover;
-}
-
-/* nav bar */
-
-.navnav {
+    background-repeat: no-repeat;
+    background-position: 0 80px;
+  }
+  
+  /* nav bar */
+  
+  .navnav {
     background-color: rgb(46, 14, 46);
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     height: 100px;
-}
-
-.navBtn {
+  }
+  
+  .navBtn {
     background-color: rgb(214, 168, 247) !important;
     align-content: center;
     color: rgb(46, 14, 46) !important;
     border: 3px solid rgb(171, 115, 193) !important;
     border-radius: 10px;
     margin: 10px;
-}
-
-/* homepage modal */
-.modal {
+  }
+  
+  /* homepage modal */
+  .modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -38,9 +40,9 @@ body {
     overflow: auto;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
+  }
+  
+  .modal-content {
     position: relative;
     background-color: #ad94b6;
     margin: auto;
@@ -52,142 +54,181 @@ body {
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
-}
-
-@-webkit-keyframes animatetop {
+  }
+  
+  @-webkit-keyframes animatetop {
     from {
         top: -300px;
         opacity: 0
     }
-
+  
     to {
         top: 0;
         opacity: 1
     }
-}
-
-@keyframes animatetop {
+  }
+  
+  @keyframes animatetop {
     from {
         top: -300px;
         opacity: 0
     }
-
+  
     to {
         top: 0;
         opacity: 1
     }
-}
-
-.close {
+  }
+  
+  .close {
     color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
+  }
+  
+  .close:hover,
+  .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-}
-
-.modal-header {
+  }
+  
+  .modal-header {
     padding: 2px 16px;
     background-color: #3a234e;
     color: white;
-
-}
-
-.modal-body {
+  
+  }
+  
+  .modal-body {
     padding: 2px 16px;
-}
-
-.modalImage {
+  }
+  
+  .modalImage {
     border-radius: 20px;
     border: 3px solid rgb(62, 29, 62);
     margin: 15px;
-    margin-top: 300px;
-}
-
-.formbox {
+  }
+  
+  .formbox {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.modalform {
+  }
+  
+  .modalform {
     margin: 7px;
     border: 3px solid black;
     border-radius: 10px;
-}
-
-.bodybox {
+  }
+  
+  .bodybox {
     display: flex;
     justify-content: center;
-}
-
-/* login page */
-
-#loginForm {
+  }
+  
+  /* login page */
+  
+  #loginForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 400px;
-}
-
-#logIn {
+  }
+  
+  #logIn {
     font-size: 30px;
     color: white;
-}
-
-.input {
+  }
+  
+  .input {
     padding: 5px;
     margin: 10px;
     border: 2px solid black;
     border-radius: 10px;
-}
-
-/* signup page */
-#signupForm {
+  }
+  
+  /* signup page */
+  #signupForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 400px;
-}
-
-#createAccount {
+    margin-top: 250px;
+  }
+  
+  #createAccount {
     font-size: 30px;
     color: white;
-}
-
-/* user page css */
-
-.center {
+  }
+  
+  /* user page css */
+  
+  .center {
     display: flex;
     margin-left: auto;
     margin-right: auto;
     width: 30%;
     transform: scale(0.5);
-}
-
-.user-center {
+  }
+  
+  .user-center {
     margin-left: auto;
     margin-right: auto;
-}
-
-.container {
+  }
+  
+  .container {
     background-image: url('../images/userBG2.png');
     background-size: cover;
-}
-
-.card-child {
+  }
+  
+  .card-child {
     width: 70%;
     transform: scale(0.5);
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-}
+  }
+  
+  
+
+  div.welcome {
+    width: 80%;
+    margin: 300px auto 0 auto;
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 20px;
+    opacity: .6;
+  }
+
+  div.no-map {
+    width: 100%;
+    padding: 20px 20px 10px 10px;
+  }
+
+  div.map-form-area {
+    display: flex;
+    gap: 20px;
+  }
+  
+  div.map-container {
+    position: relative;
+    top: 250px;
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    opacity: .7;
+    border: 1px solid #2d0d2e;
+    box-shadow: 2px 2px 6px #333;
+  }
+  
+  div.marker-form-container {
+    display: none;
+    position: relative;
+    top: -100px;
+    left: 20%;
+  }
