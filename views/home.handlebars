@@ -1,7 +1,21 @@
 {{#if loggedIn}}
-<img src="../images/mapCreatePost.png" alt="Placeholder map for button" width="300" height="300" id="myBtn"
-    class="modalImage">
+    <div class="map-container">
+        {{#if location.length }}
+            <div id="map" style="height: 300px;"></div>
+        {{else}}
+            <div class="map-form-area">
+                <img src="../images/mapCreatePost.png" alt="Placeholder map for button" width="300" height="300" id="myBtn" class="modalImage" />
+                
+                <div class="no-map">
+                    <p>You haven't provided a location for your map yet!</p>
+                </div>
+            </div>
+            
+        {{/if}}
+    </div>
+{{/if}}
 
+{{#if loggedIn}}
 <div id="myModal" class="modal">
 
     <!-- Modal content -->
@@ -13,12 +27,12 @@
 
             <form class="formbox">
                 <h2 class="createNew">Create a new place:</h2>
-                <input placeholder="Name" class="modalform newName"></input>
-                <input placeholder="Full address" class="modalform newAddress"></input>
-                <input placeholder="Lattitude" class="modalform newLat"></input>
-                <input placeholder="Longitude" class="modalform newLong"></input>
+                <input type="text" name="name" placeholder="Name" class="modalform newName" />
+                <input type="text" name="location" placeholder="Full address" class="modalform newAddress" />
+                {{!-- <input placeholder="Lattitude" class="modalform newLat"></input>
+                <input placeholder="Longitude" class="modalform newLong"></input> --}}
 
-                <div class="dropdown show">
+                {{!-- <div class="dropdown show">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Category
@@ -29,7 +43,7 @@
                         <a class="dropdown-item" href="#">Content here</a>
                         <a class="dropdown-item" href="#">Content here</a>
                     </div>
-                </div>
+                </div> --}}
                 <button class="btn btn-h">Create My Place!</button>
 
             </form>
@@ -39,17 +53,20 @@
 {{/if}}
 <!-- MODAL END -->
 
-
-<div id="map" style="height: 300px;"></div>
+{{#if loggedIn}}
 <div class="marker-form-container">
-
     <form id="marker-form">
         <label for="submit">What should we call marker?</label>
         <input type="text" id="marker-name" name="marker-name"></input>
         <button>Submit</button>
     </form>
 </div>
+{{else}}
 
+<div class="welcome">
+    [ put a nice welcome message here and style this div a little ]
+</div>
+{{/if}}
 
 <div>
     <ul>
@@ -63,4 +80,9 @@
 <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js" defer></script>
 
 <script src="/js/homePage.js"></script>
-<script src="/js/map.js"></script>
+
+{{#if loggedIn }}
+    {{#if location.length }}
+        <script src="/js/map.js"></script>
+    {{/if}}
+{{/if}}

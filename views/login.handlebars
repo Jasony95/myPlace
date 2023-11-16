@@ -21,6 +21,7 @@
     const form = document.querySelector("#loginForm")
     const usernameEl = document.querySelector("#enterUser")
     const passEl = document.querySelector("#enterPass")
+    
     form.addEventListener("submit", async function (event) {
         event.preventDefault();
         const username = usernameEl.value.trim();
@@ -33,7 +34,7 @@
         })
         console.log(response)
         if (response.ok) {
-            console.log("Send to homepage or user page")
+            window.location.href = "/"
         } else {
             alert("An error occured! You messed up!")
         }

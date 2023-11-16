@@ -16,9 +16,9 @@
 <body>
   <header>
     <nav class="navnav">
-      <a class="navBtn" href="/home">Home</a>
+      <a class="navBtn" href="/">Home</a>
       {{#if loggedIn}}
-      <a class="navBtn" href="/logout">Logout</a>
+      <a class="navBtn logout-btn" href="#">Logout</a>
       <a class="navBtn" href="/userpage">My Favorite Places</a>
       {{else}}
       <a class="navBtn" href="/login">Login</a>
@@ -44,6 +44,14 @@
     crossorigin="anonymous"></script>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
   <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js" defer></script>
+  
+  <script>
+    const logoutBtn = document.querySelector(".logout-btn")
+    logoutBtn?.addEventListener("click", async function(event){
+      const query = await fetch("/api/user/logout")
+      window.location.href = "/"
+    })
+  </script>
 </body>
 
 </html>
